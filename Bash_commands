@@ -1,0 +1,163 @@
+1) Basic .sh file
+
+In this just write a piece of code in .sh file like "echo Hello world"
+
+Run the bash script by typing "bash filename.sh"
+
+Here "bash" is the interpreter
+
+You can type "echo &SHELL" in terminal and see what interpreter terminal is using
+
+-----------------------------------------------------------------------------------
+2) Execution of .sh file
+
+""#!" is specifying what interpreter to use for executing the file
+
+Here "#!/bin/bash" specifying that use the bash interpreter for executing the file
+
+The make the file executable by doing "chmod u+x filename.sh"
+
+Then run the file by "./filename.sh"
+
+-----------------------------------------------------------------------------------
+3) Variables
+
+You can assign variables values like "Varaible=TEXT"
+and call in the bash script like "cmd $Varaible" (cmd => cat, echo, cp, read etc)
+
+And execute this bash file
+
+-----------------------------------------------------------------------------------
+4) Positional arguments
+
+Takes in the positional arguments such as (in this case cmd is postional argument 0)
+"cmd $1 $2"
+
+Execute the file using "./filename.sh text1 text2"
+
+Eg : ./posargu.sh N Prateek (try in the "Python-Udemy-New/Bash_cmd" folder)
+
+-----------------------------------------------------------------------------------
+5) Ouput/input redirection
+
+PIPING : cmd1 | cmd2
+Here cmd1 is used to get the info like "ls -l", "cat" etc.
+And cmd2 is used to filter like "grep" etc.
+
+Eg : ls -l | grep Folder (try in the "Python-Udemy-New/Bash_cmd" folder)
+
+Output redirection : echo text1 (>/>>) filename.format
+
+Eg : echo Hello world! > hello.txt (write)
+     echo Hello world! >> hello.txt (append)
+
+Eg : cat << EOF
+
+-----------------------------------------------------------------------------------
+6) Test_operators
+
+test case => [ hello = hello ]
+output of test case => echo $? (1 for no issues, 0 there's a problem)
+
+-----------------------------------------------------------------------------------
+7) If-elif, else
+
+if [ ${1,,} = herbert]; then
+    echo "Oh, you're the boss here. Welcome"
+    ....
+    ....
+    ....
+elif [....]; then
+    ....
+    ....
+    ....
+else
+    ....
+    ....
+    ....
+fi
+
+[ ${1,,} = herbert]
+Means it checks for the first postional argument ./filename text1 text2
+If only text1 = herbert
+Here text1 can be herbert or Herbert or HERbert etc as 2 commas indicate ignore lower and upper cases
+
+Now it's just a normal if else statement
+
+fi ends the if else statements
+
+Execution :  ./ifelifelse.sh help
+
+-----------------------------------------------------------------------------------
+8) Case statements
+
+case ${1,,} in
+    herbert | administrator)
+        ....
+        ....
+        ....
+        ;;
+    help)
+        ....
+        ....
+        ....
+        ;;
+    *)
+        ....
+        ....
+        ....
+esac
+
+case ${1,,} determines if the first positional argument matches with which of the following case given
+
+if you give herbert or administrator first case is executed, else 2nd else default case which is given by "*"
+
+Execution : ./case_statements.sh administrator
+
+-----------------------------------------------------------------------------------
+9) Arrays
+
+Arrays are written as
+array=(item1 item2 item3 ......)
+
+To get all elements of an array we say
+echo ${array[@]}
+
+To get the i'th element in the array we say
+echo ${array[i]}
+
+-----------------------------------------------------------------------------------
+10) Forloops
+
+forloops are written as
+for item in ${array[@]} do cmd done
+
+here we loop through all the array elements
+
+"do" the cmd that is specified such as "do echo -n $item | wc -c"(we see the word count of each element in the array)
+
+we end the forloop with done
+
+-----------------------------------------------------------------------------------
+11) Functions
+
+functionname(){
+    ....
+    ....
+    ....
+    ....
+
+}
+functionname
+
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
